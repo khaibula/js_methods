@@ -1,4 +1,3 @@
-
 /**
  @param {Array<T>} array
  @param {Number} size
@@ -6,11 +5,22 @@
  */
 
 const lodashChunk = (array, size) => {
-  const newArray = [];
+  let newArray = [];
+  let chunk = [];
 
-  for (let i = 0, chunk = []; i < array.length; i++) {
-    // if()
+  for (let i = 0; i < array.length; i++) {
+    chunk.push(array[i])
+
+    if (chunk.length === size) {
+      newArray.push(chunk)
+      chunk = [];
+    }
+
+    if (i === array.length - 1 && chunk.length) {
+      newArray.push(chunk)
+    }
   }
+
 
   return newArray;
 }
